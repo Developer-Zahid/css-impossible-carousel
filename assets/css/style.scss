@@ -3,7 +3,8 @@ $translateX: 3em;
 $translateY: 4em;
 $rotate: 8deg;
 
-@import url('//db.onlinewebfonts.com/c/8afe455ba1f531b757c3be1d8942f652?family=Orelo+SemiWide+Medium');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600&display=swap');
+@import url('https://db.onlinewebfonts.com/c/8afe455ba1f531b757c3be1d8942f652?family=Orelo+SemiWide+Medium');
 
 *{
     margin: 0;
@@ -11,8 +12,8 @@ $rotate: 8deg;
     outline: 0;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+    font-family: 'Bodoni Moda', serif;
     font-family: "Orelo SemiWide Medium", serif;
-    font-weight: 600;
 }
 
 html{
@@ -95,11 +96,13 @@ body{
 
     &__number{
         font-size: 7rem;
+        font-weight: 400;
         text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     }
 
     &__text{
         font-size: 2.5rem;
+        font-weight: 600;
         text-transform: capitalize;
     }
 }
