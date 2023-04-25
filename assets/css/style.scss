@@ -4,7 +4,15 @@ $translateY: 4em;
 $rotate: 8deg;
 
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600&display=swap');
-@import url('https://db.onlinewebfonts.com/c/8afe455ba1f531b757c3be1d8942f652?family=Orelo+SemiWide+Medium');
+
+@font-face {font-family: "Orelo SemiWide Medium";
+    src: url("http://db.onlinewebfonts.com/t/8afe455ba1f531b757c3be1d8942f652.eot"); /* IE9*/
+    src: url("http://db.onlinewebfonts.com/t/8afe455ba1f531b757c3be1d8942f652.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("http://db.onlinewebfonts.com/t/8afe455ba1f531b757c3be1d8942f652.woff2") format("woff2"), /* chrome firefox */
+    url("http://db.onlinewebfonts.com/t/8afe455ba1f531b757c3be1d8942f652.woff") format("woff"), /* chrome firefox */
+    url("http://db.onlinewebfonts.com/t/8afe455ba1f531b757c3be1d8942f652.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("http://db.onlinewebfonts.com/t/8afe455ba1f531b757c3be1d8942f652.svg#Orelo SemiWide Medium") format("svg"); /* iOS 4.1- */
+}
 
 *{
     margin: 0;
