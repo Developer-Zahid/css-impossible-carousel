@@ -1,0 +1,135 @@
+$totalSlide: 5;
+$translateX: 3em;
+$translateY: 4em;
+$rotate: 8deg;
+
+@import url('//db.onlinewebfonts.com/c/8afe455ba1f531b757c3be1d8942f652?family=Orelo+SemiWide+Medium');
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Orelo SemiWide Medium", serif;
+    font-weight: 600;
+}
+
+html{
+    font-size: clamp(6px, 1vw, 10px);
+}
+
+html,
+body{
+    height: 100%;
+    overflow: hidden;
+}
+
+body{
+    position: relative;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, black, #220033);
+}
+
+[name="slider"]{
+    position: fixed;
+    pointer-events: none;
+    user-select: none;
+    appearance: none;
+    opacity: 0;
+}
+
+.slider-item{
+    position: absolute;
+    transform:
+        translateX(calc(var(--index) * ($translateX * -1)))
+        translateY(calc(var(--index) * ($translateY * -1)))
+        rotate(calc(var(--index) * ($rotate * -1)));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30rem;
+    height: 40rem;
+    padding: 2rem;
+    isolation: isolate;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.95;
+    transition: all 0.8s cubic-bezier(0, 0.02, 0, 1);
+    transform-origin: center bottom;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0) 30%,
+                rgba(0, 0, 0, 0) 50%,
+                rgba(0, 0, 0, 0.7)
+            );
+    }
+
+    &__image{
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        pointer-events: none;
+        user-select: none;
+        z-index: -1;
+    }
+
+    &__number{
+        font-size: 7rem;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &__text{
+        font-size: 2.5rem;
+        text-transform: capitalize;
+    }
+}
+
+@for $outside from 1 through $totalSlide {
+    #slider--#{$outside}:checked ~ [for="slider--#{$outside}"]{
+        opacity: 1;
+        box-shadow: 0 10px 50px 10px rgba(0, 0, 0, 0.5);
+        z-index: 999999;
+        transform: translateX(0) translateY(0) rotate(0);
+
+        &::after {
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0.3),
+                    rgba(0, 0, 0, 0) 30%,
+                    rgba(0, 0, 0, 0) 50%,
+                    rgba(0, 0, 0, 0.5)
+                );
+        }
+    }
+
+    @for $inside from 1 through $totalSlide{
+        #slider--#{$outside}:checked ~ .slider-item[for="slider--#{$outside + $inside}"]{
+            z-index: calc($totalSlide - var(--index));
+            transform:
+                translateX(calc(#{$inside * $translateX}))
+                translateY(calc(#{$inside * $translateY}))
+                rotate(calc(#{$inside * $rotate}));
+        }
+    }
+}
