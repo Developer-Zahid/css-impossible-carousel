@@ -1,14 +1,15 @@
 @import url("https://fonts.cdnfonts.com/css/oruguitas");
 :root {
-  --translateX: 3em;
-  --translateY: 4em;
-  --rotate: 12deg;
+  --translateX: 2em;
+  --translateY: 1em;
+  --rotate: 6deg;
 }
 
 @supports selector(:has([name="slider"]:checked)) {
   :root {
     --translateX: 80%;
     --translateY: 20%;
+    --rotate: 12deg;
   }
 }
 * {
